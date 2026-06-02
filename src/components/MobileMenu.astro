@@ -1,0 +1,19 @@
+---
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/about', label: 'Sobre mí' },
+  { href: '/work', label: 'Trabajo' },
+  { href: '/services', label: 'Servicios' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contacto' },
+];
+---
+
+<div class="mobile-menu" aria-hidden="true">
+  {links.map((l) => <a href={l.href} data-label={l.label}>{l.label}</a>)}
+  <div class="mm-foot">
+    <a class="icon-btn" href="https://wa.me/529991284580" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a class="icon-btn" href="https://www.instagram.com/ivangarcia10/" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+    <a class="icon-btn" href="https://www.linkedin.com/in/ivanalexisgarcia/" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+  </div>
+</div>

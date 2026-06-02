@@ -1,0 +1,37 @@
+---
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/about', label: 'Sobre mí' },
+  { href: '/work', label: 'Trabajo' },
+  { href: '/services', label: 'Servicios' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contacto' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) =>
+  href === '/' ? pathname === '/' : pathname === href;
+---
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="wordmark" href="/" data-label="Ivan Garcia" aria-label="Ivan Garcia — inicio">
+      <svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.3 5.7 11.4 12 12-6.3.6-11.4 5.7-12 12-.6-6.3-5.7-11.4-12-12C6.3 11.4 11.4 6.3 12 0z"/></svg>
+      IVAN GARCIA
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      {links.map((l) => (
+        <a
+          class="nav__link"
+          href={l.href}
+          data-label={l.label}
+          aria-current={isCurrent(l.href) ? 'page' : undefined}
+        >{l.label}</a>
+      ))}
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary" href="/contact" data-label="Hablemos" data-magnetic="0.25">Hablemos</a>
+      <button class="nav__burger" aria-label="Abrir menú"><span></span><span></span></button>
+    </div>
+  </div>
+</header>

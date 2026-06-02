@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contacto — Ivan Garcia"
+  description="¿Tienes un proyecto en mente? Cuéntame y te respondo por WhatsApp. Mérida, México — trabajo con clientes en todas partes."
+>
+  <section class="hero wrap" style="min-height:auto;padding-top:140px;padding-bottom:0;">
+    <div class="hero__inner">
+      <p class="eyebrow">Contacto</p>
+      <h1 class="display d-xxl" data-hero-split style="margin-top:22px;">Hablemos.</h1>
+      <p class="lead muted reveal" data-d="3" style="margin-top:24px;max-width:42ch;">¿Tienes un proyecto en mente? Cuéntame y te respondo por WhatsApp. También puedes escribirme directo.</p>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split" style="align-items:start;">
+      <!-- FORM -->
+      <form id="contactForm" class="stack-md reveal" novalidate>
+        <div class="field">
+          <label for="f-name">Nombre</label>
+          <input class="input" id="f-name" name="name" type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="field">
+          <label for="f-company">Empresa <span class="muted">(opcional)</span></label>
+          <input class="input" id="f-company" name="company" type="text" placeholder="Tu empresa o marca" />
+        </div>
+        <div class="field">
+          <label for="f-type">¿Qué necesitas?</label>
+          <input class="input" id="f-type" name="type" type="text" placeholder="Tienda Shopify, web app, rediseño…" />
+        </div>
+        <div class="field">
+          <label for="f-msg">Mensaje</label>
+          <textarea class="textarea" id="f-msg" name="message" placeholder="Cuéntame sobre tu proyecto, objetivos y plazos." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" data-magnetic="0.2" style="justify-content:center;">Enviar por WhatsApp <span class="arrow">↗</span></button>
+        <p class="muted" style="font-size:13px;">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+      </form>
+
+      <!-- DIRECT CONTACT -->
+      <div class="stack-md reveal" data-d="1">
+        <p class="eyebrow">Directo</p>
+        <div class="contact-list">
+          <a class="contact-item" href="https://wa.me/529991284580" target="_blank" rel="noopener">
+            <span><span class="ci-label"><i data-lucide="message-circle" class="ic-sm"></i> WhatsApp</span><br><span class="ci-value">+52 999 128 4580</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="contact-item" href="https://www.instagram.com/ivangarcia10/" target="_blank" rel="noopener">
+            <span><span class="ci-label"><i data-lucide="instagram" class="ic-sm"></i> Instagram</span><br><span class="ci-value">@ivangarcia10</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/ivanalexisgarcia/" target="_blank" rel="noopener">
+            <span><span class="ci-label"><i data-lucide="linkedin" class="ic-sm"></i> LinkedIn</span><br><span class="ci-value">ivanalexisgarcia</span></span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+        <div class="spotlight spotlight--orange" style="margin-top:18px;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <p class="eyebrow" style="color:rgba(255,255,255,0.85)">Ubicación</p>
+          <p class="display d-md" style="color:#fff;margin-top:8px;">Mérida, México — trabajo con clientes en todas partes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var name = f.name.value.trim();
+      var company = f.company.value.trim();
+      var type = f.type.value.trim();
+      var msg = f.message.value.trim();
+      if (!name || !msg) {
+        var bad = !name ? f.querySelector('#f-name') : f.querySelector('#f-msg');
+        bad.focus();
+        bad.style.borderColor = '#ff5577';
+        setTimeout(function () { bad.style.borderColor = ''; }, 1600);
+        return;
+      }
+      var lines = ['Hola Ivan, soy ' + name + '.'];
+      if (company) lines.push('Empresa: ' + company);
+      if (type) lines.push('Necesito: ' + type);
+      lines.push('', msg);
+      var text = encodeURIComponent(lines.join('\n'));
+      window.open('https://wa.me/529991284580?text=' + text, '_blank', 'noopener');
+    });
+  </script>
+</Base>
