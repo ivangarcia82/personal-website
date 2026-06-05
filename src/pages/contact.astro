@@ -34,6 +34,9 @@ import Base from '../layouts/Base.astro';
           <label for="f-msg">Mensaje</label>
           <textarea class="textarea" id="f-msg" name="message" placeholder="Cuéntame sobre tu proyecto, objetivos y plazos." required></textarea>
         </div>
+        <p class="form-error" id="form-error" role="alert" aria-live="polite">
+          <i data-lucide="alert-circle"></i><span></span>
+        </p>
         <button type="submit" class="btn btn--primary" data-magnetic="0.2" style="justify-content:center;">Enviar por WhatsApp <span class="arrow">↗</span></button>
         <p class="muted" style="font-size:13px;">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
       </form>
@@ -64,20 +67,39 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <script is:inline>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
+    var form = document.getElementById('contactForm');
+    var errBox = document.getElementById('form-error');
+    var errText = errBox.querySelector('span');
+
+    function clearError(field) {
+      errBox.classList.remove('show');
+      field.removeAttribute('aria-invalid');
+    }
+
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
       var f = e.target;
-      var name = f.name.value.trim();
+      var nameField = f.querySelector('#f-name');
+      var msgField = f.querySelector('#f-msg');
+      var name = nameField.value.trim();
       var company = f.company.value.trim();
       var type = f.type.value.trim();
-      var msg = f.message.value.trim();
+      var msg = msgField.value.trim();
       if (!name || !msg) {
-        var bad = !name ? f.querySelector('#f-name') : f.querySelector('#f-msg');
+        var bad = !name ? nameField : msgField;
+        errText.textContent = !name
+          ? 'Falta tu nombre para poder escribirte.'
+          : 'Cuéntame brevemente qué necesitas en el mensaje.';
+        errBox.classList.add('show');
+        bad.setAttribute('aria-invalid', 'true');
         bad.focus();
-        bad.style.borderColor = '#ff5577';
-        setTimeout(function () { bad.style.borderColor = ''; }, 1600);
+        bad.addEventListener('input', function handler() {
+          clearError(bad);
+          bad.removeEventListener('input', handler);
+        });
         return;
       }
+      errBox.classList.remove('show');
       var lines = ['Hola Ivan, soy ' + name + '.'];
       if (company) lines.push('Empresa: ' + company);
       if (type) lines.push('Necesito: ' + type);

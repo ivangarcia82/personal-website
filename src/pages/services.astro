@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const U = (id: string, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 ---
 
 <Base
@@ -7,49 +8,60 @@ import Base from '../layouts/Base.astro';
   description="Del diseño al despliegue: web design, ecommerce Shopify, mobile apps y web apps. Soluciones digitales escalables, rápidas y pensadas para tu negocio."
 >
   <!-- HERO -->
-  <section class="hero wrap" style="min-height:64svh;">
+  <section class="hero wrap" style="min-height:58svh;">
     <div class="hero__inner">
       <p class="eyebrow">Servicios</p>
       <h1 class="display d-xxl" data-hero-split style="margin-top:22px;max-width:13ch;">Lo que necesitas para lanzar y crecer.</h1>
-      <p class="lead muted reveal" data-d="3" style="margin-top:26px;max-width:48ch;">Del diseño al despliegue: soluciones digitales escalables, rápidas y pensadas para tu negocio.</p>
+      <p class="lead muted reveal" data-d="3" style="margin-top:26px;max-width:48ch;">Del diseño al despliegue: soluciones digitales escalables, rápidas y pensadas para tu negocio. Cada servicio, explicado a detalle.</p>
+    </div>
+  </section>
+
+  <!-- LEAD VISUAL -->
+  <section class="wrap">
+    <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/7;border-radius:var(--r-xxl);">
+      <img src={U('photo-1486312338219-ce68d2c6f44d', 1600)} alt="Espacio de trabajo de desarrollo con código en pantalla" />
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section class="wrap section--tight">
-    <div class="rows reveal">
-      <div class="row">
-        <div class="row__num">01</div>
-        <div class="row__body">
-          <div class="row__head"><h3 class="row__title">Web Design</h3><span class="row__icon"><i data-lucide="layout"></i></span></div>
-          <p class="row__desc">Interfaces modernas, rápidas y a la medida de tu marca. Diseño centrado en el usuario que comunica con claridad y convierte.</p>
+  <section class="section wrap section--tight">
+    <div class="svc-grid reveal">
+      <a class="svc-card" href="/services/web-design" data-label="Web Design">
+        <div class="media"><img src={U('photo-1581291518857-4e27b48ff24e')} alt="Diseño de interfaz en pantalla" /></div>
+        <div class="svc-card__body">
+          <div class="svc-card__head"><span class="row__icon"><i data-lucide="layout"></i></span><h3 class="svc-card__title">Web Design</h3></div>
+          <p>Interfaces modernas, rápidas y a la medida de tu marca. Diseño centrado en el usuario que comunica con claridad y convierte.</p>
           <div class="row__tags"><span class="chip">UI / UX</span><span class="chip">Responsive</span><span class="chip">Branding</span></div>
+          <span class="svc-card__more">Ver servicio <span class="arrow">↗</span></span>
         </div>
-      </div>
-      <div class="row">
-        <div class="row__num">02</div>
-        <div class="row__body">
-          <div class="row__head"><h3 class="row__title">Ecommerce — Shopify</h3><span class="row__icon"><i data-lucide="shopping-bag"></i></span></div>
-          <p class="row__desc">Tiendas que venden: temas custom, integraciones a la medida y optimización de conversión y rendimiento.</p>
+      </a>
+      <a class="svc-card" href="/services/ecommerce-shopify" data-label="Ecommerce — Shopify">
+        <div class="media"><img src={U('photo-1563013544-824ae1b704d3')} alt="Compra en línea desde el teléfono" /></div>
+        <div class="svc-card__body">
+          <div class="svc-card__head"><span class="row__icon"><i data-lucide="shopping-bag"></i></span><h3 class="svc-card__title">Ecommerce — Shopify</h3></div>
+          <p>Tiendas que venden: temas a la medida, integraciones y optimización de conversión y rendimiento.</p>
           <div class="row__tags"><span class="chip">Shopify</span><span class="chip">Liquid</span><span class="chip">CRO</span></div>
+          <span class="svc-card__more">Ver servicio <span class="arrow">↗</span></span>
         </div>
-      </div>
-      <div class="row">
-        <div class="row__num">03</div>
-        <div class="row__body">
-          <div class="row__head"><h3 class="row__title">Mobile Apps</h3><span class="row__icon"><i data-lucide="smartphone"></i></span></div>
-          <p class="row__desc">Aplicaciones móviles con foco en experiencia y rendimiento, listas para escalar con tu producto.</p>
+      </a>
+      <a class="svc-card" href="/services/mobile-apps" data-label="Mobile Apps">
+        <div class="media"><img src={U('photo-1556656793-08538906a9f8')} alt="Aplicación móvil en uso en un teléfono" /></div>
+        <div class="svc-card__body">
+          <div class="svc-card__head"><span class="row__icon"><i data-lucide="smartphone"></i></span><h3 class="svc-card__title">Mobile Apps</h3></div>
+          <p>Aplicaciones móviles con foco en experiencia y rendimiento, listas para escalar con tu producto.</p>
           <div class="row__tags"><span class="chip">iOS / Android</span><span class="chip">UX</span><span class="chip">Performance</span></div>
+          <span class="svc-card__more">Ver servicio <span class="arrow">↗</span></span>
         </div>
-      </div>
-      <div class="row">
-        <div class="row__num">04</div>
-        <div class="row__body">
-          <div class="row__head"><h3 class="row__title">Web Apps</h3><span class="row__icon"><i data-lucide="layers"></i></span></div>
-          <p class="row__desc">Plataformas escalables construidas con código limpio, arquitectura sólida e integraciones robustas.</p>
+      </a>
+      <a class="svc-card" href="/services/web-apps" data-label="Web Apps">
+        <div class="media"><img src={U('photo-1555066931-4365d14bab8c')} alt="Código de una aplicación web en un editor" /></div>
+        <div class="svc-card__body">
+          <div class="svc-card__head"><span class="row__icon"><i data-lucide="layers"></i></span><h3 class="svc-card__title">Web Apps</h3></div>
+          <p>Plataformas escalables construidas con código limpio, arquitectura sólida e integraciones robustas.</p>
           <div class="row__tags"><span class="chip">React</span><span class="chip">APIs</span><span class="chip">Escalable</span></div>
+          <span class="svc-card__more">Ver servicio <span class="arrow">↗</span></span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 

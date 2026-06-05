@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+---
+
+<Base
+  title="Diseño web a la medida — Servicios · Ivan Garcia"
+  description="Diseño UI/UX a la medida: interfaces claras, rápidas y responsivas, pensadas para tu marca y para guiar a cada visitante hacia la acción."
+>
+  <!-- HEADER -->
+  <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
+    <a class="case-back" href="/services" data-label="Servicios"><span class="arrow">←</span> Volver a Servicios</a>
+    <p class="eyebrow" style="display:flex;margin-top:26px;">Servicio · Web Design</p>
+    <h1 class="display d-xl" data-hero-split style="margin-top:18px;max-width:15ch;">Diseño web a la medida</h1>
+    <p class="lead muted reveal" data-d="2" style="margin-top:24px;max-width:54ch;">Interfaces claras y rápidas, diseñadas desde cero para tu marca y para guiar a cada visitante hacia la acción — no una plantilla más.</p>
+  </section>
+
+  <!-- LEAD VISUAL -->
+  <section class="wrap">
+    <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/8;border-radius:var(--r-xxl);">
+      <img src={U('photo-1561070791-2526d30994b5', 1600)} alt="Espacio de trabajo de diseño con bocetos de interfaz" />
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section wrap">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Qué incluye</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:14ch;">Cada pieza, pensada para tu producto.</h2>
+        <p class="lead muted reveal" data-d="2" style="max-width:42ch;">El diseño no es decoración: es la primera prueba de que el producto está bien construido.</p>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="layout"></i><div><span class="ck-t">Diseño UI/UX a la medida</span><span class="ck-d">Pantallas creadas desde cero según tu marca y tus usuarios.</span></div></li>
+        <li><i data-lucide="smartphone"></i><div><span class="ck-t">Responsive de verdad</span><span class="ck-d">Una sola experiencia que se ve y funciona bien en móvil, tablet y escritorio.</span></div></li>
+        <li><i data-lucide="component"></i><div><span class="ck-t">Sistema de diseño</span><span class="ck-d">Componentes, tipografía y color consistentes para que el sitio crezca sin romperse.</span></div></li>
+        <li><i data-lucide="accessibility"></i><div><span class="ck-t">Accesibilidad desde el inicio</span><span class="ck-d">Contraste, foco de teclado y semántica cuidados, no agregados al final.</span></div></li>
+        <li><i data-lucide="mouse-pointer-click"></i><div><span class="ck-t">Prototipo navegable</span><span class="ck-d">Validamos el flujo completo antes de escribir una línea de código.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECONDARY VISUAL -->
+  <section class="wrap section--tight">
+    <div class="grid-2 reveal">
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559028012-481c04fa702d', 1100)} alt="Diseño de interfaz en una herramienta de diseño" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1507238691740-187a5b1d37b8', 1100)} alt="Bocetos de wireframes sobre papel" /></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Cómo trabajo</p>
+    <h2 class="display d-lg reveal" data-d="1" style="margin-top:14px;max-width:16ch;">De la idea a la pantalla final.</h2>
+    <div class="rows reveal" data-d="1" style="margin-top:34px;">
+      <div class="row"><div class="row__num">01</div><div class="row__body"><div class="row__head"><h3 class="row__title">Descubrir</h3></div><p class="row__desc">Entiendo tu marca, tus usuarios y el objetivo de cada pantalla antes de diseñar nada.</p></div></div>
+      <div class="row"><div class="row__num">02</div><div class="row__body"><div class="row__head"><h3 class="row__title">Definir</h3></div><p class="row__desc">Mapeo la estructura, la jerarquía y los estados — qué ve el usuario y en qué orden.</p></div></div>
+      <div class="row"><div class="row__num">03</div><div class="row__body"><div class="row__head"><h3 class="row__title">Diseñar</h3></div><p class="row__desc">Doy forma a la interfaz con un sistema consistente y un prototipo que puedes recorrer.</p></div></div>
+      <div class="row"><div class="row__num">04</div><div class="row__body"><div class="row__head"><h3 class="row__title">Entregar</h3></div><p class="row__desc">Te entrego archivos ordenados y listos para desarrollo — o lo construyo yo mismo.</p></div></div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="wrap section--tight">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Lo que recibes</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:12ch;">Entregables claros.</h2>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="figma"></i><div><span class="ck-t">Archivos de diseño organizados</span></div></li>
+        <li><i data-lucide="component"></i><div><span class="ck-t">Sistema de componentes reutilizable</span></div></li>
+        <li><i data-lucide="book-open"></i><div><span class="ck-t">Guía de uso de marca</span></div></li>
+        <li><i data-lucide="code-2"></i><div><span class="ck-t">Handoff listo para desarrollo</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Preguntas frecuentes</p>
+    <div class="faq reveal" data-d="1" style="margin-top:24px;">
+      <div class="faq__item"><h3 class="faq__q">¿Trabajas a partir de una marca existente?</h3><p class="faq__a">Sí. Parto de tu identidad actual y la llevo al producto digital. Si aún no la tienes, definimos lo mínimo necesario para arrancar con coherencia.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Entregas el diseño o también lo desarrollas?</h3><p class="faq__a">Ambos. Puedo entregar el diseño listo para tu equipo, o diseñarlo y construirlo de principio a fin para que no se pierda nada en la traducción.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Incluye versión móvil?</h3><p class="faq__a">Siempre. Diseño cada pantalla pensando primero en cómo se comporta en móvil, donde llega la mayoría de tus visitantes.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Cómo manejas los cambios?</h3><p class="faq__a">Por iteraciones, con una revisión en cada etapa. Avanzamos sobre algo concreto en lugar de adivinar al final.</p></div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section class="wrap section--tight">
+    <p class="eyebrow reveal">Otros servicios</p>
+    <div class="contact-list reveal" data-d="1" style="margin-top:18px;">
+      <a class="contact-item" href="/services/ecommerce-shopify" data-label="Ecommerce — Shopify"><span class="ci-value">Ecommerce — Shopify</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/mobile-apps" data-label="Mobile Apps"><span class="ci-value">Mobile Apps</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/web-apps" data-label="Web Apps"><span class="ci-value">Web Apps</span><span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section wrap">
+    <div class="spotlight reveal" style="text-align:center;padding-block:clamp(56px,10vw,110px);">
+      <h2 class="display d-xl" style="color:#fff;margin:0 auto;max-width:16ch;">¿Diseñamos tu próxima pantalla?</h2>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
+        <a class="btn btn--primary" href="/contact" data-label="Hablemos" data-magnetic="0.3">Hablemos <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

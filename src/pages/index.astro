@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const U = (id: string, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 ---
 
 <Base
@@ -31,11 +32,14 @@ import Base from '../layouts/Base.astro';
         <p class="lead muted reveal" data-d="2" style="max-width:48ch;">Crafteo aplicaciones y plataformas que equilibran funcionalidad y experiencia de usuario — con código limpio, escalable y enfocado en el rendimiento.</p>
         <div class="reveal" data-d="3"><a class="btn btn--secondary" href="/about" data-label="Sobre mí">Más sobre mí <span class="arrow">↗</span></a></div>
       </div>
-      <div class="spotlight reveal" data-d="2" style="min-height:340px;display:flex;flex-direction:column;justify-content:space-between;">
-        <p class="eyebrow" style="color:rgba(255,255,255,0.85)">Disponible</p>
-        <div>
-          <p class="display d-md" style="color:#fff;">Abierto a nuevos proyectos para 2026.</p>
-          <p style="color:rgba(255,255,255,0.85);margin-top:14px;">Shopify · Web Apps · Mobile</p>
+      <div class="stack-md">
+        <div class="media ratio-4-3 reveal" data-d="1" data-parallax="0.06"><img src={U('photo-1498050108023-c5249f4df085', 1100)} alt="Espacio de trabajo con código en pantalla" loading="lazy" /></div>
+        <div class="spotlight reveal" data-d="2" style="min-height:240px;display:flex;flex-direction:column;justify-content:space-between;">
+          <p class="eyebrow" style="color:rgba(255,255,255,0.85)">Disponible</p>
+          <div>
+            <p class="display d-md" style="color:#fff;">Abierto a nuevos proyectos para 2026.</p>
+            <p style="color:rgba(255,255,255,0.85);margin-top:14px;">Shopify · Web Apps · Mobile</p>
+          </div>
         </div>
       </div>
     </div>
@@ -65,16 +69,20 @@ import Base from '../layouts/Base.astro';
   <section class="section wrap" id="trabajo">
     <div class="row__head" style="margin-bottom:30px;">
       <h2 class="display d-xl reveal">Trabajo<br>seleccionado</h2>
-      <p class="muted reveal" data-d="1" style="align-self:flex-end;">2023 — 2025</p>
+      <p class="muted reveal" data-d="1" style="align-self:flex-end;">2025 — 2026</p>
     </div>
     <div class="projects reveal" data-d="1">
-      <a class="project" href="/work" data-label="Pure Over" data-peek="https://cdn.prod.website-files.com/691e0d7b787f525f582b1cc6/691e118740ff47f0aec7eefa_close-up-woman-hand-using-credit-card-shopping-onl-2024-11-27-01-27-14-utc%20(1).jpg">
-        <div><span class="tag">01</span><h3 class="project__title">Pure Over</h3></div>
-        <div class="project__meta"><span>Ecommerce · Shopify</span><span>—</span><span>2023</span><span class="project__view">Ver <span class="arrow">↗</span></span></div>
+      <a class="project" href="/work/sandra-weil" data-label="Sandra Weil" data-peek="https://www.sandraweil.com/cdn/shop/files/sw_AllStore_3f082b2e-89b5-44db-9599-7538f88de4ad.png?width=900">
+        <div><span class="tag">01</span><h3 class="project__title">Sandra Weil</h3></div>
+        <div class="project__meta"><span>Moda · Ecommerce · Shopify</span><span>2025</span><span class="project__view">Ver caso <span class="arrow">↗</span></span></div>
       </a>
-      <a class="project" href="/work" data-label="CEMEX Supply" data-peek="https://cdn.prod.website-files.com/691e0d7b787f525f582b1cc6/691e11308e976663f9f463f4_it-development-background-2025-03-10-02-02-29-utc%20(1).jpg">
-        <div><span class="tag">02</span><h3 class="project__title">CEMEX Supply</h3></div>
-        <div class="project__meta"><span>Ecommerce · Web App</span><span>—</span><span>2023</span><span class="project__view">Ver <span class="arrow">↗</span></span></div>
+      <a class="project" href="/work/sognare" data-label="Sognare" data-peek="https://sognare.com.mx/cdn/shop/files/SG_MAY26_BannerExtensionDesc_1600x610_TS.jpg?width=900">
+        <div><span class="tag">02</span><h3 class="project__title">Sognare</h3></div>
+        <div class="project__meta"><span>Ecommerce · Shopify · CRO</span><span>2025</span><span class="project__view">Ver caso <span class="arrow">↗</span></span></div>
+      </a>
+      <a class="project" href="/work/pure-over" data-label="Pure Over" data-peek="https://cdn.shopify.com/s/files/1/0482/9721/4111/files/pure-over-signature-brew-kit-all-glass-pour-over-front.png?width=900">
+        <div><span class="tag">03</span><h3 class="project__title">Pure Over</h3></div>
+        <div class="project__meta"><span>Ecommerce · Shopify</span><span>2025</span><span class="project__view">Ver caso <span class="arrow">↗</span></span></div>
       </a>
     </div>
     <div class="reveal" data-d="1" style="margin-top:30px;"><a class="btn btn--secondary" href="/work" data-label="Trabajo">Ver todos los proyectos <span class="arrow">↗</span></a></div>
@@ -85,10 +93,10 @@ import Base from '../layouts/Base.astro';
     <p class="eyebrow reveal">Servicios</p>
     <h2 class="display d-lg reveal" data-d="1" style="margin-top:14px;max-width:18ch;">Todo lo que necesitas para lanzar y crecer.</h2>
     <div class="rows reveal" data-d="1" style="margin-top:30px;">
-      <div class="row"><div class="row__num">01</div><div class="row__body"><div class="row__head"><h3 class="row__title">Web Design</h3><span class="row__icon"><i data-lucide="layout"></i></span></div><p class="row__desc">Interfaces modernas, rápidas y a la medida de tu marca.</p></div></div>
-      <div class="row"><div class="row__num">02</div><div class="row__body"><div class="row__head"><h3 class="row__title">Ecommerce — Shopify</h3><span class="row__icon"><i data-lucide="shopping-bag"></i></span></div><p class="row__desc">Tiendas que venden: temas custom, integraciones y optimización.</p></div></div>
-      <div class="row"><div class="row__num">03</div><div class="row__body"><div class="row__head"><h3 class="row__title">Mobile Apps</h3><span class="row__icon"><i data-lucide="smartphone"></i></span></div><p class="row__desc">Aplicaciones móviles con foco en experiencia y rendimiento.</p></div></div>
-      <div class="row"><div class="row__num">04</div><div class="row__body"><div class="row__head"><h3 class="row__title">Web Apps</h3><span class="row__icon"><i data-lucide="layers"></i></span></div><p class="row__desc">Plataformas escalables construidas con código limpio.</p></div></div>
+      <a class="row" href="/services/web-design" data-label="Web Design"><div class="row__num">01</div><div class="row__body"><div class="row__head"><h3 class="row__title">Web Design</h3><span class="row__icon"><i data-lucide="layout"></i></span></div><p class="row__desc">Interfaces modernas, rápidas y a la medida de tu marca.</p></div></a>
+      <a class="row" href="/services/ecommerce-shopify" data-label="Ecommerce — Shopify"><div class="row__num">02</div><div class="row__body"><div class="row__head"><h3 class="row__title">Ecommerce — Shopify</h3><span class="row__icon"><i data-lucide="shopping-bag"></i></span></div><p class="row__desc">Tiendas que venden: temas a la medida, integraciones y optimización.</p></div></a>
+      <a class="row" href="/services/mobile-apps" data-label="Mobile Apps"><div class="row__num">03</div><div class="row__body"><div class="row__head"><h3 class="row__title">Mobile Apps</h3><span class="row__icon"><i data-lucide="smartphone"></i></span></div><p class="row__desc">Aplicaciones móviles con foco en experiencia y rendimiento.</p></div></a>
+      <a class="row" href="/services/web-apps" data-label="Web Apps"><div class="row__num">04</div><div class="row__body"><div class="row__head"><h3 class="row__title">Web Apps</h3><span class="row__icon"><i data-lucide="layers"></i></span></div><p class="row__desc">Plataformas escalables construidas con código limpio.</p></div></a>
     </div>
     <div class="reveal" data-d="1" style="margin-top:30px;"><a class="btn btn--secondary" href="/services" data-label="Servicios">Conocer servicios <span class="arrow">↗</span></a></div>
   </section>

@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Página no encontrada — Ivan Garcia"
+  description="La página que buscas no existe o cambió de lugar. Vuelve al inicio o explora el trabajo."
+>
+  <section class="hero wrap" style="min-height:84svh;">
+    <div class="hero__inner">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="display d-xxl" data-hero-split style="margin-top:22px;max-width:13ch;">Esta página no existe.</h1>
+      <p class="lead muted reveal" data-d="3" style="margin-top:26px;max-width:42ch;">El enlace cambió de lugar o nunca existió. No es nada que no podamos arreglar — sigue por aquí.</p>
+
+      <div class="hero__ctas reveal" data-d="4">
+        <a class="btn btn--primary" href="/" data-label="Inicio" data-magnetic="0.3">Volver al inicio <span class="arrow">↗</span></a>
+        <a class="btn btn--secondary" href="/work" data-label="Trabajo">Ver trabajo</a>
+      </div>
+
+      <nav class="contact-list reveal" data-d="5" aria-label="Enlaces útiles" style="margin-top:clamp(40px,7vw,72px);">
+        <a class="contact-item" href="/work" data-label="Trabajo">
+          <span class="ci-value">Trabajo</span><span class="arrow">↗</span>
+        </a>
+        <a class="contact-item" href="/services" data-label="Servicios">
+          <span class="ci-value">Servicios</span><span class="arrow">↗</span>
+        </a>
+        <a class="contact-item" href="/contact" data-label="Contacto">
+          <span class="ci-value">Contacto</span><span class="arrow">↗</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+</Base>

@@ -10,7 +10,7 @@
   --accent-blue: #0099ff;
   --ink: #ffffff;
   --ink-muted: #999999;
-  --ink-dim: #6b6b6b;
+  --ink-dim: #7c7c7c; /* ~4.8:1 on --canvas — clears WCAG AA for small text */
   --canvas: #090909;
   --surface-1: #141414;
   --surface-2: #1c1c1c;
@@ -76,6 +76,27 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
+/* Keyboard focus — visible accent ring for every interactive element.
+   :focus-visible keeps it off for mouse/touch (and the custom cursor). */
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+/* Inputs already carry their own focus border+glow; avoid doubling the ring. */
+.input:focus-visible, .textarea:focus-visible { outline: none; }
+
+/* Skip link — first tab stop, hidden until focused. */
+.skip-link {
+  position: fixed; top: 10px; left: 10px; z-index: 300;
+  transform: translateY(-160%);
+  background: var(--ink); color: var(--canvas);
+  font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+  padding: 11px 18px; border-radius: var(--r-md);
+  transition: transform .25s var(--ease);
+}
+.skip-link:focus { transform: translateY(0); }
+
 /* ---------- Layout helpers ---------- */
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: clamp(64px, 9vw, 120px); position: relative; }
@@ -99,7 +120,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.045em;
   text-wrap: balance;
 }
-.d-xxl { font-size: clamp(52px, 12vw, 132px); line-height: 0.85; letter-spacing: -0.05em; }
+.d-xxl { font-size: clamp(46px, 10.5vw, 96px); line-height: 0.86; letter-spacing: -0.04em; }
 .d-xl  { font-size: clamp(40px, 8vw, 88px); line-height: 0.92; letter-spacing: -0.045em; }
 .d-lg  { font-size: clamp(34px, 5.4vw, 64px); line-height: 0.98; letter-spacing: -0.04em; }
 .d-md  { font-size: clamp(26px, 3.4vw, 34px); line-height: 1.08; letter-spacing: -0.025em; }
@@ -212,10 +233,18 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
    If animations are paused (unfocused pane), it simply navigates — never stuck. */
 .page-trans {
   position: fixed; inset: 0; z-index: 200; pointer-events: none;
-  background: #000; transform: translateY(100%);
+  background: #000; transform: translateY(100%); will-change: transform;
 }
-.page-trans.leaving { animation: leaveUp .5s cubic-bezier(.76,0,.24,1) forwards; }
-@keyframes leaveUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+/* OUTBOUND — the curtain rises from the bottom and fully covers before we
+   navigate (the swap happens on a black screen, so it never looks cut). */
+.page-trans.leaving { animation: ptCover 1s cubic-bezier(.76,0,.24,1) forwards; }
+@keyframes ptCover { from { transform: translateY(100%); } to { transform: translateY(0); } }
+/* INBOUND — the head script pre-covers the screen (translateY 0) before first
+   paint, then the curtain lifts off the top to reveal the new page. Two-part
+   handoff = cover → navigate → reveal, instead of a single quick flash. */
+.pt-incoming .page-trans { transform: translateY(0); }
+.pt-incoming .page-trans.revealing { animation: ptReveal 1.05s cubic-bezier(.76,0,.24,1) forwards; }
+@keyframes ptReveal { from { transform: translateY(0); } to { transform: translateY(-100%); } }
 .page-trans__label {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 7vw, 64px);
@@ -223,8 +252,12 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
 }
 
 /* ---------- Reveal animations ---------- */
-.reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
-.reveal.in { opacity: 1; transform: none; }
+/* Reveal contract: content is VISIBLE by default. The hidden→reveal entrance
+   only engages when JS is confirmed (html.js-anim, set before first paint), so
+   no-JS / crawlers / link-unfurlers always get content, never a blank section. */
+.reveal { opacity: 1; transform: none; }
+.js-anim .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+.js-anim .reveal.in { opacity: 1; transform: none; }
 .reveal[data-d="1"] { transition-delay: .08s; }
 .reveal[data-d="2"] { transition-delay: .16s; }
 .reveal[data-d="3"] { transition-delay: .24s; }
@@ -271,7 +304,11 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
 }
 .spotlight::after {
   content:""; position:absolute; inset:0; z-index:-1;
-  background: radial-gradient(120% 120% at 50% 0%, transparent 40%, rgba(0,0,0,0.28));
+  /* Vignette + a light uniform scrim so white display text clears ≥3:1
+     even over the lightest orange region of the gradient (WCAG AA, large text). */
+  background:
+    radial-gradient(120% 120% at 50% 0%, transparent 40%, rgba(0,0,0,0.32)),
+    linear-gradient(0deg, rgba(0,0,0,0.14), rgba(0,0,0,0.14));
 }
 @keyframes drift {
   0%   { transform: scale(1.05) rotate(0deg) translate(0,0); }
@@ -318,8 +355,8 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
 .project__peek.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 @media (hover: none) { .project__peek { display: none; } }
 
-/* index number tag */
-.tag { font-size: 12px; font-weight: 500; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+/* index number tag — --ink-muted (≈6.5:1 on canvas) clears AA for small text */
+.tag { font-size: 12px; font-weight: 500; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
 
 /* ---------- Service / process list ---------- */
 .rows { border-top: 1px solid var(--hairline); }
@@ -416,7 +453,16 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
 .input::placeholder, .textarea::placeholder { color: var(--ink-dim); }
 .input:focus, .textarea:focus { outline: none; border-color: var(--accent-blue);
   box-shadow: 0 0 0 4px rgba(0,153,255,0.15); }
+.input[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--grad-coral); }
 .textarea { resize: vertical; min-height: 140px; }
+
+/* inline form error — calm, specific, not an alert() */
+.form-error {
+  display: none; align-items: center; gap: 8px;
+  color: var(--grad-coral); font-size: 13.5px; line-height: 1.35;
+}
+.form-error.show { display: flex; }
+.form-error [data-lucide] { width: 15px; height: 15px; flex: none; }
 
 /* contact links */
 .contact-list { display: grid; gap: 2px; border-top: 1px solid var(--hairline); }
@@ -468,8 +514,97 @@ body.cursor-on a, body.cursor-on button { cursor: none; }
   .post-grid { grid-template-columns: 1fr; }
   .row { grid-template-columns: 1fr; gap: 10px; }
   .row__num { padding-top: 0; }
-  .project { grid-template-columns: 1fr; }
-  .project__view { display: none; }
+  /* Single column on mobile; keep the meta + "Ver caso" affordance visible so
+     rows read as links even without hover/peek (touch can't fire the preview). */
+  .project { grid-template-columns: 1fr; gap: 10px; }
+  .project__meta { flex-wrap: wrap; }
+  .project__view { margin-left: auto; color: var(--ink); }
+}
+
+/* ---------- Case study ---------- */
+.case-back {
+  display: flex; align-items: center; gap: 8px; width: fit-content;
+  font-size: 14px; color: var(--ink-muted);
+  transition: color .3s var(--ease), gap .3s var(--ease);
+}
+.case-back:hover { color: var(--ink); gap: 12px; }
+.case-back .arrow { transition: transform .3s var(--ease); }
+.case-back:hover .arrow { transform: translateX(-3px); }
+
+/* spec table (cliente / rol / año / stack) */
+.specs {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+  border-block: 1px solid var(--hairline); padding-block: clamp(20px, 3vw, 30px);
+}
+.specs > div { display: grid; gap: 7px; align-content: start; }
+.specs dt { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dim); }
+.specs dd { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.25; }
+
+/* clearly-marked placeholder media — pending the real project capture */
+.media--ph {
+  display: grid; place-content: center; justify-items: center; gap: 12px;
+  border: 1px dashed var(--hairline); background:
+    repeating-linear-gradient(-45deg, transparent 0 9px, rgba(255,255,255,0.014) 9px 18px),
+    var(--surface-1);
+  color: var(--ink-muted); text-align: center; padding: 24px;
+}
+.media--ph [data-lucide] { width: 28px; height: 28px; color: var(--ink-dim); }
+.media--ph span { font-size: 13px; letter-spacing: 0.01em; }
+
+/* honest placeholder note (e.g. result metric pending real data) */
+.note-ph {
+  display: flex; gap: 12px; align-items: flex-start;
+  border: 1px dashed var(--hairline); border-radius: var(--r-lg);
+  padding: 18px 20px; color: var(--ink-muted); font-size: 15px; line-height: 1.45;
+}
+.note-ph [data-lucide] { width: 18px; height: 18px; color: var(--ink-dim); flex: none; margin-top: 2px; }
+
+/* ---------- Service cards (image-led, link to detail) ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2.4vw, 26px); }
+.svc-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface-1); border: 1px solid var(--hairline-soft); border-radius: var(--r-xl);
+  transition: transform .5s var(--ease), border-color .4s var(--ease);
+}
+.svc-card:hover { transform: translateY(-6px); border-color: var(--hairline); }
+.svc-card .media { border-radius: 0; aspect-ratio: 16/10; }
+.svc-card__body { padding: clamp(20px, 2.6vw, 30px); display: grid; gap: 14px; align-content: start; }
+.svc-card__head { display: flex; align-items: center; gap: 12px; }
+.svc-card__head .row__icon { width: 40px; height: 40px; }
+.svc-card__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(22px, 2.8vw, 28px);
+  letter-spacing: -0.025em; line-height: 1.05; }
+.svc-card p { color: var(--ink-muted); font-size: 15px; line-height: 1.42; }
+/* CTA pinned to the bottom so every card's link sits on one line */
+.svc-card__more { margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500; color: var(--ink-muted); transition: color .35s var(--ease), gap .35s var(--ease); }
+.svc-card:hover .svc-card__more { color: var(--ink); gap: 12px; }
+.svc-card__more .arrow { transition: transform .4s var(--ease); }
+.svc-card:hover .svc-card__more .arrow { transform: translate(3px, -3px); }
+
+/* ---------- Checklist ("qué incluye" / "entregables") ---------- */
+.checklist { display: grid; gap: 2px; border-top: 1px solid var(--hairline); }
+.checklist li {
+  display: flex; gap: 14px; align-items: flex-start; list-style: none;
+  padding: 16px 4px; border-bottom: 1px solid var(--hairline);
+}
+.checklist li > [data-lucide] { width: 18px; height: 18px; color: var(--accent-blue); flex: none; margin-top: 2px; }
+.checklist .ck-t { font-weight: 500; color: var(--ink); font-size: clamp(15px, 1.7vw, 17px); }
+.checklist .ck-d { color: var(--ink-muted); font-size: 14px; line-height: 1.4; margin-top: 3px; display: block; }
+
+/* ---------- FAQ (plain Q&A list, no accordion) ---------- */
+.faq { display: grid; gap: 0; border-top: 1px solid var(--hairline); }
+.faq__item {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(16px, 4vw, 48px); padding: clamp(22px, 3vw, 34px) 0;
+  border-bottom: 1px solid var(--hairline); align-items: start;
+}
+.faq__q { font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, 2.2vw, 23px);
+  letter-spacing: -0.02em; line-height: 1.15; }
+.faq__a { color: var(--ink-muted); font-size: clamp(15px, 1.7vw, 17px); line-height: 1.5; max-width: 58ch; }
+@media (max-width: 760px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .faq__item { grid-template-columns: 1fr; gap: 10px; }
 }
 
 /* ---------- Reduced motion ---------- */

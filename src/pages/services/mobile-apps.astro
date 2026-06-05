@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+---
+
+<Base
+  title="Mobile Apps — Servicios · Ivan Garcia"
+  description="Aplicaciones móviles para iOS y Android con foco en experiencia y rendimiento: interfaces nativas, integración con APIs y publicación en las tiendas."
+>
+  <!-- HEADER -->
+  <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
+    <a class="case-back" href="/services" data-label="Servicios"><span class="arrow">←</span> Volver a Servicios</a>
+    <p class="eyebrow" style="display:flex;margin-top:26px;">Servicio · Mobile Apps</p>
+    <h1 class="display d-xl" data-hero-split style="margin-top:18px;max-width:14ch;">Apps móviles que se sienten bien</h1>
+    <p class="lead muted reveal" data-d="2" style="margin-top:24px;max-width:54ch;">Aplicaciones para iOS y Android con foco en la experiencia y el rendimiento — listas para crecer con tu producto, no para frenarlo.</p>
+  </section>
+
+  <!-- LEAD VISUAL -->
+  <section class="wrap">
+    <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/8;border-radius:var(--r-xxl);">
+      <img src={U('photo-1512941937669-90a1b58e7e9c', 1600)} alt="Persona usando una aplicación en su teléfono" />
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section wrap">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Qué incluye</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:14ch;">De la pantalla al App Store.</h2>
+        <p class="lead muted reveal" data-d="2" style="max-width:42ch;">Una app no es un sitio web metido en un teléfono: se diseña y se construye para el móvil.</p>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="smartphone"></i><div><span class="ck-t">iOS y Android</span><span class="ck-d">Una sola base de código bien hecha para llegar a ambas plataformas.</span></div></li>
+        <li><i data-lucide="hand"></i><div><span class="ck-t">Experiencia móvil</span><span class="ck-d">Gestos, navegación y estados pensados para el pulgar, no para el mouse.</span></div></li>
+        <li><i data-lucide="gauge"></i><div><span class="ck-t">Rendimiento</span><span class="ck-d">Arranque rápido y desplazamiento fluido, incluso con conexiones lentas.</span></div></li>
+        <li><i data-lucide="plug"></i><div><span class="ck-t">Integración con APIs</span><span class="ck-d">Conexión con tu backend, tus datos y los servicios que ya usas.</span></div></li>
+        <li><i data-lucide="rocket"></i><div><span class="ck-t">Publicación en las tiendas</span><span class="ck-d">Te acompaño en el proceso de subirla a App Store y Google Play.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECONDARY VISUAL -->
+  <section class="wrap section--tight">
+    <div class="grid-2 reveal">
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1551650975-87deedd944c3', 1100)} alt="Interfaz de una aplicación móvil en pantalla" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1601784551446-20c9e07cdbdb', 1100)} alt="Teléfono mostrando una aplicación en uso" /></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Cómo trabajo</p>
+    <h2 class="display d-lg reveal" data-d="1" style="margin-top:14px;max-width:16ch;">De idea a app publicada.</h2>
+    <div class="rows reveal" data-d="1" style="margin-top:34px;">
+      <div class="row"><div class="row__num">01</div><div class="row__body"><div class="row__head"><h3 class="row__title">Definir el alcance</h3></div><p class="row__desc">Identificamos las pantallas y funciones que de verdad importan para la primera versión.</p></div></div>
+      <div class="row"><div class="row__num">02</div><div class="row__body"><div class="row__head"><h3 class="row__title">Diseñar el flujo</h3></div><p class="row__desc">Diseño la navegación y cada estado de la app antes de construir.</p></div></div>
+      <div class="row"><div class="row__num">03</div><div class="row__body"><div class="row__head"><h3 class="row__title">Desarrollar</h3></div><p class="row__desc">Construyo con código limpio, conecto los datos y pruebo en dispositivos reales.</p></div></div>
+      <div class="row"><div class="row__num">04</div><div class="row__body"><div class="row__head"><h3 class="row__title">Publicar</h3></div><p class="row__desc">Preparo los recursos de tienda y subimos la app a App Store y Google Play.</p></div></div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="wrap section--tight">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Lo que recibes</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:12ch;">Una app lista para usuarios.</h2>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="smartphone"></i><div><span class="ck-t">App funcionando en iOS y Android</span></div></li>
+        <li><i data-lucide="code-2"></i><div><span class="ck-t">Código fuente documentado</span></div></li>
+        <li><i data-lucide="store"></i><div><span class="ck-t">Publicación en las tiendas a tu nombre</span></div></li>
+        <li><i data-lucide="bar-chart-3"></i><div><span class="ck-t">Analítica para entender el uso real</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Preguntas frecuentes</p>
+    <div class="faq reveal" data-d="1" style="margin-top:24px;">
+      <div class="faq__item"><h3 class="faq__q">¿Una app para ambas plataformas o solo una?</h3><p class="faq__a">En la mayoría de los casos conviene una sola base de código para iOS y Android: mismo presupuesto, doble alcance. Si tu caso pide algo nativo puro, lo hablamos.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Necesito ya un backend?</h3><p class="faq__a">No necesariamente. Si no lo tienes, puedo construir también la parte de servidor y las APIs que la app necesita para funcionar.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Me ayudas a publicarla?</h3><p class="faq__a">Sí. Preparo íconos, capturas y textos de tienda, y te acompaño en el proceso de revisión de App Store y Google Play.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Qué pasa con las actualizaciones?</h3><p class="faq__a">Dejo la app en un estado mantenible. Puedo encargarme de las nuevas versiones o pasar el código a tu equipo con todo documentado.</p></div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section class="wrap section--tight">
+    <p class="eyebrow reveal">Otros servicios</p>
+    <div class="contact-list reveal" data-d="1" style="margin-top:18px;">
+      <a class="contact-item" href="/services/web-design" data-label="Web Design"><span class="ci-value">Web Design</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/ecommerce-shopify" data-label="Ecommerce — Shopify"><span class="ci-value">Ecommerce — Shopify</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/web-apps" data-label="Web Apps"><span class="ci-value">Web Apps</span><span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section wrap">
+    <div class="spotlight spotlight--violet reveal" style="text-align:center;padding-block:clamp(56px,10vw,110px);">
+      <h2 class="display d-xl" style="color:#fff;margin:0 auto;max-width:16ch;">¿Llevamos tu idea al móvil?</h2>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
+        <a class="btn btn--primary" href="/contact" data-label="Hablemos" data-magnetic="0.3">Hablemos <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

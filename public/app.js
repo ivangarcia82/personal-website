@@ -48,7 +48,15 @@
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => io.observe(el));
+  /* Robustness net: a JS-capable renderer that never scrolls (link unfurlers,
+     headless snapshotters, some crawlers) would otherwise leave every below-fold
+     .reveal stuck hidden. Reveal anything still gated shortly after load — an
+     interactive visitor has already triggered the scroll reveals by then. */
+  addEventListener('load', () => {
+    setTimeout(() => reveals.forEach(el => el.classList.add('in')), 1600);
+  });
 
   /* ---------- Hero text build-in ---------- */
   function buildHero() {
@@ -130,8 +138,8 @@
   const overlay = document.querySelector('.page-trans');
   const overlayLabel = overlay ? overlay.querySelector('.page-trans__label') : null;
 
-  // No incoming curtain: page bg is already black, so content just reveals.
-  // The curtain only covers on outbound navigation.
+  // Outbound covers here; the inbound reveal is handled by the head script in
+  // Base.astro (it pre-covers before paint and lifts the curtain on load).
 
   function isInternal(a) {
     if (!a) return false;
@@ -144,6 +152,8 @@
 
   if (overlay && !reduce) {
     document.addEventListener('click', e => {
+      // let new-tab / modified clicks and non-primary buttons behave normally
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
       const a = e.target.closest('a');
       if (!isInternal(a)) return;
       const href = a.getAttribute('href');
@@ -152,20 +162,29 @@
       if (overlayLabel) {
         overlayLabel.textContent = a.getAttribute('data-label') || '';
         overlayLabel.animate(
-          [{ opacity: 0 }, { opacity: 1, offset: 0.6 }, { opacity: 1 }],
-          { duration: 600, fill: 'forwards' }
+          [{ opacity: 0 }, { opacity: 1 }],
+          { duration: 500, fill: 'forwards', easing: 'cubic-bezier(0.16,1,0.3,1)' }
         );
       }
+      // flag the inbound page so it reveals the curtain instead of just popping in
+      try { sessionStorage.setItem('pt-go', '1'); } catch (err) {}
       overlay.classList.add('leaving');
-      setTimeout(() => { location.href = href; }, 470);
+      // navigate only after the curtain has fully covered (~1s) so the swap
+      // happens on a solid black screen and never looks cut
+      setTimeout(() => { location.href = href; }, 1020);
     });
   }
 
-  /* restore on back/forward cache */
+  /* restore on back/forward cache: drop any transition state so a restored
+     page is never left covered or mid-animation */
   addEventListener('pageshow', e => {
-    if (e.persisted && overlay) {
-      overlay.classList.remove('leaving');
-      overlay.style.transform = '';
+    if (e.persisted) {
+      document.documentElement.classList.remove('pt-incoming');
+      if (overlay) {
+        overlay.classList.remove('leaving', 'revealing');
+        overlay.style.transform = '';
+      }
+      try { sessionStorage.removeItem('pt-go'); } catch (err) {}
     }
   });
 

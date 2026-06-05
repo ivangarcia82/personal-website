@@ -13,6 +13,8 @@ const {
   title = 'Ivan Garcia — Desarrollador Web',
   description = 'Ivan Garcia, desarrollador web en Mérida. Construyo tiendas Shopify y aplicaciones web a la medida que ayudan a las marcas a crecer.',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 ---
 
 <!DOCTYPE html>
@@ -20,13 +22,77 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Inbound page-transition: if we arrived via an internal link, pre-cover the
+       screen before first paint, then lift the curtain to reveal. Runs early and
+       self-contained (no dependency on app.js); a hard timeout guarantees the
+       page is never left covered, even if animations are throttled. -->
+  <script is:inline>
+    (function () {
+      try {
+        // Enable the reveal entrance only when JS is confirmed, before first
+        // paint. Without this class, .reveal content stays visible by default.
+        document.documentElement.classList.add('js-anim');
+      } catch (e) {}
+      try {
+        if (sessionStorage.getItem('pt-go') !== '1') return;
+        sessionStorage.removeItem('pt-go');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var html = document.documentElement;
+        html.classList.add('pt-incoming');
+        var cleared = false;
+        function clear() {
+          if (cleared) return; cleared = true;
+          html.classList.remove('pt-incoming');
+          var ov = document.querySelector('.page-trans');
+          if (ov) ov.classList.remove('revealing');
+        }
+        function reveal() {
+          var ov = document.querySelector('.page-trans');
+          if (!ov) { clear(); return; }
+          ov.classList.add('revealing');
+          ov.addEventListener('animationend', clear, { once: true });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', reveal, { once: true });
+        } else { reveal(); }
+        setTimeout(clear, 2400); // safety ceiling — never leave the page covered
+      } catch (e) {}
+    })();
+  </script>
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#090909" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ivan Garcia" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="es_MX" />
+  <!-- TODO(contenido): añadir una imagen social real (1200×630) en /public y enlazarla
+       como og:image + twitter:image, luego cambiar twitter:card a summary_large_image. -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- No-JS / crawler fallback: reveal-gated content must be visible without the
+       IntersectionObserver, otherwise everything below the hero ships blank. -->
+  <noscript><style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .line-inner, .word > span { transform: none !important; }
+  </style></noscript>
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
   <!-- PAGE TRANSITION -->
   <div class="page-trans" aria-hidden="true"><div class="page-trans__label"></div></div>
@@ -34,7 +100,7 @@ const {
   <Nav />
   <MobileMenu />
 
-  <main>
+  <main id="main">
     <slot />
   </main>
 

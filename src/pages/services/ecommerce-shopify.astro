@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+---
+
+<Base
+  title="Ecommerce con Shopify — Servicios · Ivan Garcia"
+  description="Tiendas Shopify que venden: tema a la medida en Liquid, integraciones, optimización de conversión y rendimiento, y migración desde otras plataformas."
+>
+  <!-- HEADER -->
+  <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
+    <a class="case-back" href="/services" data-label="Servicios"><span class="arrow">←</span> Volver a Servicios</a>
+    <p class="eyebrow" style="display:flex;margin-top:26px;">Servicio · Ecommerce</p>
+    <h1 class="display d-xl" data-hero-split style="margin-top:18px;max-width:14ch;">Tiendas Shopify que venden</h1>
+    <p class="lead muted reveal" data-d="2" style="margin-top:24px;max-width:54ch;">Un tema a la medida, una experiencia de compra sin fricción y el rendimiento que tu conversión necesita — construido sobre la base más sólida del ecommerce.</p>
+  </section>
+
+  <!-- LEAD VISUAL -->
+  <section class="wrap">
+    <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/8;border-radius:var(--r-xxl);">
+      <img src={U('photo-1556742049-0cfed4f6a45d', 1600)} alt="Compra en línea con tarjeta en una tienda de ecommerce" />
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section wrap">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Qué incluye</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:14ch;">Todo lo que tu tienda necesita para vender.</h2>
+        <p class="lead muted reveal" data-d="2" style="max-width:42ch;">Sin depender de un tema genérico que se ve igual que el de tu competencia.</p>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="shopping-bag"></i><div><span class="ck-t">Tema a la medida en Liquid</span><span class="ck-d">Diseño y código propios, alineados a tu marca y a cómo compran tus clientes.</span></div></li>
+        <li><i data-lucide="layout-grid"></i><div><span class="ck-t">Productos y colecciones</span><span class="ck-d">Catálogo, variantes y navegación organizados para que encontrar sea fácil.</span></div></li>
+        <li><i data-lucide="credit-card"></i><div><span class="ck-t">Pagos y envíos</span><span class="ck-d">Checkout, métodos de pago y reglas de envío configurados y probados.</span></div></li>
+        <li><i data-lucide="plug"></i><div><span class="ck-t">Apps e integraciones</span><span class="ck-d">Conexión con las herramientas de tu operación: inventario, email, analítica.</span></div></li>
+        <li><i data-lucide="trending-up"></i><div><span class="ck-t">Optimización de conversión</span><span class="ck-d">Página de producto y flujo de compra pensados para reducir el abandono.</span></div></li>
+        <li><i data-lucide="zap"></i><div><span class="ck-t">Rendimiento en móvil</span><span class="ck-d">Carga rápida donde ocurre la mayoría de las ventas.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECONDARY VISUAL -->
+  <section class="wrap section--tight">
+    <div class="grid-2 reveal">
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559056199-641a0ac8b55e', 1100)} alt="Producto de marca fotografiado para una tienda en línea" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1563013544-824ae1b704d3', 1100)} alt="Persona comprando en una tienda en línea desde el teléfono" /></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Cómo trabajo</p>
+    <h2 class="display d-lg reveal" data-d="1" style="margin-top:14px;max-width:16ch;">De catálogo a primera venta.</h2>
+    <div class="rows reveal" data-d="1" style="margin-top:34px;">
+      <div class="row"><div class="row__num">01</div><div class="row__body"><div class="row__head"><h3 class="row__title">Entender el producto</h3></div><p class="row__desc">Reviso qué vendes, a quién y cómo, para diseñar la tienda alrededor de eso.</p></div></div>
+      <div class="row"><div class="row__num">02</div><div class="row__body"><div class="row__head"><h3 class="row__title">Diseñar la experiencia</h3></div><p class="row__desc">Defino la home, la colección y la página de producto con foco en convertir.</p></div></div>
+      <div class="row"><div class="row__num">03</div><div class="row__body"><div class="row__head"><h3 class="row__title">Construir e integrar</h3></div><p class="row__desc">Desarrollo el tema en Liquid y conecto pagos, envíos y las apps que uses.</p></div></div>
+      <div class="row"><div class="row__num">04</div><div class="row__body"><div class="row__head"><h3 class="row__title">Lanzar y afinar</h3></div><p class="row__desc">Probamos todo el flujo de compra, lanzamos y ajustamos sobre datos reales.</p></div></div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="wrap section--tight">
+    <div class="split" style="align-items:start;">
+      <div class="stack-md">
+        <p class="eyebrow reveal">Lo que recibes</p>
+        <h2 class="display d-lg reveal" data-d="1" style="max-width:12ch;">Una tienda lista para operar.</h2>
+      </div>
+      <ul class="checklist reveal" data-d="1">
+        <li><i data-lucide="store"></i><div><span class="ck-t">Tienda Shopify configurada y en producción</span></div></li>
+        <li><i data-lucide="code-2"></i><div><span class="ck-t">Tema a la medida en tu cuenta, tuyo para siempre</span></div></li>
+        <li><i data-lucide="book-open"></i><div><span class="ck-t">Guía para cargar productos y gestionar pedidos</span></div></li>
+        <li><i data-lucide="bar-chart-3"></i><div><span class="ck-t">Analítica conectada para medir desde el día uno</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section wrap">
+    <p class="eyebrow reveal">Preguntas frecuentes</p>
+    <div class="faq reveal" data-d="1" style="margin-top:24px;">
+      <div class="faq__item"><h3 class="faq__q">¿Shopify o una tienda a la medida?</h3><p class="faq__a">Para la mayoría de las marcas, Shopify con un tema bien construido es la decisión correcta: inviertes en producto y conversión, no en reinventar el checkout. Cuando el volumen lo justifica, migramos piezas a una arquitectura headless.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Puedes migrar mi tienda actual?</h3><p class="faq__a">Sí. Migro catálogo, clientes y contenido desde otra plataforma o desde un tema anterior, cuidando que no se pierdan ventas durante el cambio.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Trabajas con apps de terceros?</h3><p class="faq__a">Cuando suman. Prefiero resolver en el tema lo que se puede para no cargar la tienda de apps, y reservo las integraciones para lo que de verdad las necesita.</p></div>
+      <div class="faq__item"><h3 class="faq__q">¿Quién mantiene la tienda después?</h3><p class="faq__a">La dejo de forma que tu equipo pueda gestionarla a diario sin tocar código. Si lo prefieres, puedo encargarme del mantenimiento y las mejoras continuas.</p></div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section class="wrap section--tight">
+    <p class="eyebrow reveal">Otros servicios</p>
+    <div class="contact-list reveal" data-d="1" style="margin-top:18px;">
+      <a class="contact-item" href="/services/web-design" data-label="Web Design"><span class="ci-value">Web Design</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/mobile-apps" data-label="Mobile Apps"><span class="ci-value">Mobile Apps</span><span class="arrow">↗</span></a>
+      <a class="contact-item" href="/services/web-apps" data-label="Web Apps"><span class="ci-value">Web Apps</span><span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section wrap">
+    <div class="spotlight spotlight--orange reveal" style="text-align:center;padding-block:clamp(56px,10vw,110px);">
+      <h2 class="display d-xl" style="color:#fff;margin:0 auto;max-width:16ch;">¿Construimos tu tienda?</h2>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
+        <a class="btn btn--primary" href="/contact" data-label="Hablemos" data-magnetic="0.3">Hablemos <span class="arrow">↗</span></a>
+        <a class="btn btn--secondary" href="https://wa.me/529991284580" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.16);">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Base>
