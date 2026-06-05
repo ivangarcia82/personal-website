@@ -7,14 +7,106 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  ogType?: string;
+  publishedTime?: string;
+  noindex?: boolean;
+  jsonld?: Record<string, unknown>[];
 }
 
 const {
   title = 'Ivan Garcia — Desarrollador Web',
   description = 'Ivan Garcia, desarrollador web en Mérida. Construyo tiendas Shopify y aplicaciones web a la medida que ayudan a las marcas a crecer.',
+  image = 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=630&q=80',
+  ogType = 'website',
+  publishedTime,
+  noindex = false,
+  jsonld = [],
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const site = Astro.site ?? new URL(Astro.url.origin);
+const origin = site.origin;
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+
+const baseGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${origin}/#website`,
+      url: `${origin}/`,
+      name: 'Ivan Garcia',
+      description:
+        'Desarrollador web en Mérida. Construyo tiendas Shopify y aplicaciones web a la medida que ayudan a las marcas a crecer.',
+      inLanguage: 'es-MX',
+      publisher: { '@id': `${origin}/#person` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${origin}/#person`,
+      name: 'Ivan Garcia',
+      givenName: 'Ivan',
+      familyName: 'Garcia',
+      jobTitle: 'Desarrollador Web',
+      description:
+        'Diseño y construyo tiendas Shopify y aplicaciones web a la medida que ayudan a las marcas a crecer.',
+      url: `${origin}/about/`,
+      image:
+        'https://cdn.prod.website-files.com/691e0d7b787f525f582b1cc6/691e0dc2fa47b997376625a9_581242616_2615477665490146_3560785756473390153_n.jpg',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mérida',
+        addressRegion: 'Yucatán',
+        addressCountry: 'MX',
+      },
+      telephone: '+52-999-128-4580',
+      knowsAbout: [
+        'Shopify', 'Desarrollo web', 'Liquid', 'React', 'Node.js',
+        'Aplicaciones móviles', 'Diseño UI/UX', 'Ecommerce', 'Figma', 'Astro',
+      ],
+      sameAs: [
+        'https://www.instagram.com/ivangarcia10/',
+        'https://www.linkedin.com/in/ivanalexisgarcia/',
+      ],
+      worksFor: { '@id': `${origin}/#organization` },
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${origin}/#organization`,
+      name: 'Ivan Garcia — Desarrollador Web',
+      alternateName: 'ivang.mx',
+      description:
+        'Diseño y desarrollo de tiendas Shopify y aplicaciones web a la medida en Mérida, México.',
+      url: `${origin}/`,
+      logo: { '@type': 'ImageObject', url: `${origin}/favicon.svg` },
+      founder: { '@id': `${origin}/#person` },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mérida',
+        addressRegion: 'Yucatán',
+        addressCountry: 'MX',
+      },
+      telephone: '+52-999-128-4580',
+      areaServed: [{ '@type': 'Country', name: 'México' }],
+      sameAs: [
+        'https://www.instagram.com/ivangarcia10/',
+        'https://www.linkedin.com/in/ivanalexisgarcia/',
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Servicios de desarrollo web',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${origin}/services/web-design/#service`, name: 'Diseño web a la medida' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${origin}/services/ecommerce-shopify/#service`, name: 'Ecommerce con Shopify' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${origin}/services/mobile-apps/#service`, name: 'Mobile Apps' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${origin}/services/web-apps/#service`, name: 'Web Apps' } },
+        ],
+      },
+    },
+  ],
+};
+const graphs = [baseGraph, ...jsonld];
 ---
 
 <!DOCTYPE html>
@@ -22,6 +114,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {noindex && <meta name="robots" content="noindex,follow" />}
   <!-- Inbound page-transition: if we arrived via an internal link, pre-cover the
        screen before first paint, then lift the curtain to reveal. Runs early and
        self-contained (no dependency on app.js); a hard timeout guarantees the
@@ -68,20 +161,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
   <meta name="theme-color" content="#090909" />
 
   <!-- Open Graph / social -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="Ivan Garcia" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content="es_MX" />
-  <!-- TODO(contenido): añadir una imagen social real (1200×630) en /public y enlazarla
-       como og:image + twitter:image, luego cambiar twitter:card a summary_large_image. -->
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content={ogImage} />
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {publishedTime && <meta property="article:author" content={`${origin}/about/`} />}
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://cdn.prod.website-files.com" />
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <!-- No-JS / crawler fallback: reveal-gated content must be visible without the
        IntersectionObserver, otherwise everything below the hero ships blank. -->
@@ -89,6 +186,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
     .reveal { opacity: 1 !important; transform: none !important; }
     .line-inner, .word > span { transform: none !important; }
   </style></noscript>
+  {graphs.map((g) => <script type="application/ld+json" set:html={JSON.stringify(g)} />)}
 </head>
 <body>
 

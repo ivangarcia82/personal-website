@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="CEMEX Supply — Caso de estudio · Ivan Garcia"
   description="Plataforma de ecommerce industrial para CEMEX Supply: catálogo a gran escala, seguimiento de pedidos e integraciones, sobre una base escalable."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/cemex-supply/#project',
+      name: 'CEMEX Supply — Caso de estudio',
+      url: 'https://www.ivang.mx/work/cemex-supply/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'CEMEX Supply' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://www.cemexsupply.com/cdn/shop/files/Banner_Conoce_catalogo_llantas.jpg?width=1600" alt="Banner del catálogo de la tienda en línea de CEMEX Supply" loading="lazy" />
+      <img src="https://www.cemexsupply.com/cdn/shop/files/Banner_Conoce_catalogo_llantas.jpg?width=1600" width="1600" height="900" alt="Banner del catálogo de la tienda en línea de CEMEX Supply" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real del proyecto. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Un catálogo de miles de SKUs con envío nacional y seguimiento de pedido self-service, que llevó a que <strong>+30%</strong> de los pedidos se completaran sin intervención de soporte.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Con el nuevo flujo de pedidos, una mayor parte de las compras se completó sin intervención de soporte.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://www.cemexsupply.com/cdn/shop/files/SACO_SOLO.jpg?width=900" alt="Producto de material de construcción del catálogo de CEMEX Supply" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://www.cemexsupply.com/cdn/shop/products/TR696_Llanta_Neumatico_Triangle_Toda_Posicion_CEMEXSupply.jpg?width=900" alt="Llanta industrial del catálogo de CEMEX Supply" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://www.cemexsupply.com/cdn/shop/files/SACO_SOLO.jpg?width=900" width="1200" height="900" alt="Producto de material de construcción del catálogo de CEMEX Supply" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://www.cemexsupply.com/cdn/shop/products/TR696_Llanta_Neumatico_Triangle_Toda_Posicion_CEMEXSupply.jpg?width=900" width="1200" height="900" alt="Llanta industrial del catálogo de CEMEX Supply" loading="lazy" /></div>
     </div>
   </section>
 

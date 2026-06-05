@@ -6,6 +6,37 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
 <Base
   title="Ecommerce con Shopify — Servicios · Ivan Garcia"
   description="Tiendas Shopify que venden: tema a la medida en Liquid, integraciones, optimización de conversión y rendimiento, y migración desde otras plataformas."
+  jsonld={[
+    {
+      '@type': 'Service',
+      '@id': 'https://www.ivang.mx/services/ecommerce-shopify/#service',
+      name: 'Ecommerce con Shopify',
+      url: 'https://www.ivang.mx/services/ecommerce-shopify/',
+      description: 'Tiendas Shopify que venden: tema a la medida en Liquid, integraciones, optimización de conversión y rendimiento, y migración desde otras plataformas.',
+      serviceType: 'Desarrollo de tiendas Shopify a la medida',
+      inLanguage: 'es-MX',
+      provider: { '@id': 'https://www.ivang.mx/#organization' },
+      areaServed: { '@type': 'Country', name: 'México' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.ivang.mx/services/' },
+        { '@type': 'ListItem', position: 3, name: 'Ecommerce con Shopify' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.ivang.mx/services/ecommerce-shopify/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: '¿Shopify o una tienda a la medida?', acceptedAnswer: { '@type': 'Answer', text: 'Para la mayoría de las marcas, Shopify con un tema bien construido es la decisión correcta: inviertes en producto y conversión, no en reinventar el checkout. Cuando el volumen lo justifica, migramos piezas a una arquitectura headless.' } },
+        { '@type': 'Question', name: '¿Puedes migrar mi tienda actual?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Migro catálogo, clientes y contenido desde otra plataforma o desde un tema anterior, cuidando que no se pierdan ventas durante el cambio.' } },
+        { '@type': 'Question', name: '¿Trabajas con apps de terceros?', acceptedAnswer: { '@type': 'Answer', text: 'Cuando suman. Prefiero resolver en el tema lo que se puede para no cargar la tienda de apps, y reservo las integraciones para lo que de verdad las necesita.' } },
+        { '@type': 'Question', name: '¿Quién mantiene la tienda después?', acceptedAnswer: { '@type': 'Answer', text: 'La dejo de forma que tu equipo pueda gestionarla a diario sin tocar código. Si lo prefieres, puedo encargarme del mantenimiento y las mejoras continuas.' } },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -44,8 +75,8 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
   <!-- SECONDARY VISUAL -->
   <section class="wrap section--tight">
     <div class="grid-2 reveal">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559056199-641a0ac8b55e', 1100)} alt="Producto de marca fotografiado para una tienda en línea" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1563013544-824ae1b704d3', 1100)} alt="Persona comprando en una tienda en línea desde el teléfono" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559056199-641a0ac8b55e', 1100)} width="1200" height="900" alt="Producto de marca fotografiado para una tienda en línea" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1563013544-824ae1b704d3', 1100)} width="1200" height="900" alt="Persona comprando en una tienda en línea desde el teléfono" /></div>
     </div>
   </section>
 

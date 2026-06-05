@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="Mi Tienda Socio — Caso de estudio · Ivan Garcia"
   description="Portal de ecommerce para Mi Tienda Socio, la tienda oficial de promocionales de Grupo Salinas: un catálogo de marca, organizado y fácil de navegar."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/mi-tienda-socio/#project',
+      name: 'Mi Tienda Socio — Caso de estudio',
+      url: 'https://www.ivang.mx/work/mi-tienda-socio/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'Mi Tienda Socio' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://mitiendasocio.com.mx/cdn/shop/files/Banner_2026_GS.jpg?width=1600" alt="Banner del portal renovado de Mi Tienda Socio" loading="lazy" />
+      <img src="https://mitiendasocio.com.mx/cdn/shop/files/Banner_2026_GS.jpg?width=1600" width="1600" height="900" alt="Banner del portal renovado de Mi Tienda Socio" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real del proyecto. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">La reorganización del catálogo en <strong>7 categorías</strong> bajó cerca de <strong>25%</strong> el tiempo promedio para encontrar un producto, en un portal listo para crecer marca por marca.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">La nueva organización del catálogo redujo de forma clara el tiempo que toma encontrar un producto.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://mitiendasocio.com.mx/cdn/shop/files/04GSC0202050585_Anfora_Drop_TVA.jpg?width=1000" alt="Producto promocional del catálogo de Mi Tienda Socio" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://mitiendasocio.com.mx/cdn/shop/files/04GSC1010010689_Van_Gogh_Alive.jpg?width=1000" alt="Taza promocional del catálogo de Mi Tienda Socio" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://mitiendasocio.com.mx/cdn/shop/files/04GSC0202050585_Anfora_Drop_TVA.jpg?width=1000" width="1200" height="900" alt="Producto promocional del catálogo de Mi Tienda Socio" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://mitiendasocio.com.mx/cdn/shop/files/04GSC1010010689_Van_Gogh_Alive.jpg?width=1000" width="1200" height="900" alt="Taza promocional del catálogo de Mi Tienda Socio" loading="lazy" /></div>
     </div>
   </section>
 

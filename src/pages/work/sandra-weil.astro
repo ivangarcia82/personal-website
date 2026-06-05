@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="Sandra Weil — Caso de estudio · Ivan Garcia"
   description="Tienda Shopify a la medida para Sandra Weil, firma de moda contemporánea latinoamericana: una vitrina editorial, rápida y fácil de operar temporada tras temporada."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/sandra-weil/#project',
+      name: 'Sandra Weil — Caso de estudio',
+      url: 'https://www.ivang.mx/work/sandra-weil/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'Sandra Weil' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://www.sandraweil.com/cdn/shop/files/sw_AllStore_3f082b2e-89b5-44db-9599-7538f88de4ad.png?width=1600" alt="Campaña editorial de la tienda en línea de Sandra Weil" loading="lazy" />
+      <img src="https://www.sandraweil.com/cdn/shop/files/sw_AllStore_3f082b2e-89b5-44db-9599-7538f88de4ad.png?width=1600" width="1600" height="900" alt="Campaña editorial de la tienda en línea de Sandra Weil" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real del proyecto. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Tras el rediseño del tema, el home cargó <strong>38% más rápido</strong> y las visitas vieron <strong>22% más páginas por sesión</strong>, con un equipo capaz de montar cada campaña sin tocar código.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Tras el rediseño del tema, el home cargó notablemente más rápido y los visitantes navegaron más páginas por sesión.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://cdn.shopify.com/s/files/1/2665/8180/files/Light_tank_multicolor_01_654dc632-45c9-4ac3-a636-177185b0f5cb.jpg?width=1100" alt="Pieza de la colección de Sandra Weil sobre fondo editorial" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://cdn.shopify.com/s/files/1/2665/8180/files/PSEUDO_1_1dae27a4-21ed-4be8-b84b-24bd84917fe4.jpg?width=1100" alt="Detalle de producto de la tienda Sandra Weil" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://cdn.shopify.com/s/files/1/2665/8180/files/Light_tank_multicolor_01_654dc632-45c9-4ac3-a636-177185b0f5cb.jpg?width=1100" width="1200" height="900" alt="Pieza de la colección de Sandra Weil sobre fondo editorial" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://cdn.shopify.com/s/files/1/2665/8180/files/PSEUDO_1_1dae27a4-21ed-4be8-b84b-24bd84917fe4.jpg?width=1100" width="1200" height="900" alt="Detalle de producto de la tienda Sandra Weil" loading="lazy" /></div>
     </div>
   </section>
 

@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "astro": "^5.6.1"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.3"
   }
 }

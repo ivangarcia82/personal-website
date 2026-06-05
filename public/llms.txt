@@ -1,0 +1,19 @@
+# Ivan Garcia
+
+> Desarrollador web freelance en Mérida, México. Diseño y construyo tiendas
+> Shopify y aplicaciones web y móviles a la medida que ayudan a las marcas a crecer.
+
+## Servicios
+- [Ecommerce con Shopify](https://www.ivang.mx/services/ecommerce-shopify/): Temas a la medida en Liquid, integraciones, CRO y migraciones.
+- [Web Design](https://www.ivang.mx/services/web-design/): Diseño UI/UX a la medida.
+- [Web Apps](https://www.ivang.mx/services/web-apps/): Plataformas escalables con código limpio.
+- [Mobile Apps](https://www.ivang.mx/services/mobile-apps/): Apps móviles para iOS y Android.
+
+## Trabajo
+- [Casos de estudio](https://www.ivang.mx/work/): Sandra Weil, Sognare, Pure Over, CEMEX Supply, Mi Tienda Socio, Terrakan.
+
+## Blog
+- [Shopify o tienda a la medida: cómo decidir](https://www.ivang.mx/article/)
+
+## Contacto
+- [Contacto](https://www.ivang.mx/contact/) — Mérida, México

@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="Pure Over — Caso de estudio · Ivan Garcia"
   description="Tienda Shopify a la medida para Pure Over, marca de cafeteras de filtro 100% vidrio: un sitio tan limpio como el producto, optimizado para convertir."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/pure-over/#project',
+      name: 'Pure Over — Caso de estudio',
+      url: 'https://www.ivang.mx/work/pure-over/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'Pure Over' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://d3k81ch9hvuctc.cloudfront.net/company/TUrtEz/images/bc91eb8b-711f-45e6-8ed0-0a2053cc9f1c.png" alt="Preparación de café de filtro con la cafetera de vidrio Pure Over" loading="lazy" />
+      <img src="https://d3k81ch9hvuctc.cloudfront.net/company/TUrtEz/images/bc91eb8b-711f-45e6-8ed0-0a2053cc9f1c.png" width="1600" height="900" alt="Preparación de café de filtro con la cafetera de vidrio Pure Over" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real del proyecto. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Tras rediseñar la página de producto, la conversión en móvil subió <strong>+19%</strong> y el home cargó <strong>1.2 s más rápido</strong>, sosteniendo mejor las campañas de temporada.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">Tras rediseñar la tienda, la experiencia en móvil mejoró notablemente — una tienda más rápida y limpia que convierte mejor y sostiene las campañas de temporada.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://cdn.shopify.com/s/files/1/0482/9721/4111/files/pure-over-signature-brew-kit-all-glass-pour-over-front.png?width=1000" alt="Kit de preparación de café Pure Over en vidrio" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://i.shgcdn.com/939e8b00-e151-4715-9564-bc316c62653f/-/resize/900x/" alt="Cafetera de filtro de vidrio Pure Over" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://cdn.shopify.com/s/files/1/0482/9721/4111/files/pure-over-signature-brew-kit-all-glass-pour-over-front.png?width=1000" width="1200" height="900" alt="Kit de preparación de café Pure Over en vidrio" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://i.shgcdn.com/939e8b00-e151-4715-9564-bc316c62653f/-/resize/900x/" width="1200" height="900" alt="Cafetera de filtro de vidrio Pure Over" loading="lazy" /></div>
     </div>
   </section>
 

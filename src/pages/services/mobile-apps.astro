@@ -6,6 +6,37 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
 <Base
   title="Mobile Apps — Servicios · Ivan Garcia"
   description="Aplicaciones móviles para iOS y Android con foco en experiencia y rendimiento: interfaces nativas, integración con APIs y publicación en las tiendas."
+  jsonld={[
+    {
+      '@type': 'Service',
+      '@id': 'https://www.ivang.mx/services/mobile-apps/#service',
+      name: 'Mobile Apps',
+      url: 'https://www.ivang.mx/services/mobile-apps/',
+      description: 'Aplicaciones móviles para iOS y Android con foco en experiencia y rendimiento: interfaces nativas, integración con APIs y publicación en las tiendas.',
+      serviceType: 'Desarrollo de aplicaciones móviles',
+      inLanguage: 'es-MX',
+      provider: { '@id': 'https://www.ivang.mx/#organization' },
+      areaServed: { '@type': 'Country', name: 'México' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.ivang.mx/services/' },
+        { '@type': 'ListItem', position: 3, name: 'Mobile Apps' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.ivang.mx/services/mobile-apps/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: '¿Una app para ambas plataformas o solo una?', acceptedAnswer: { '@type': 'Answer', text: 'En la mayoría de los casos conviene una sola base de código para iOS y Android: mismo presupuesto, doble alcance. Si tu caso pide algo nativo puro, lo hablamos.' } },
+        { '@type': 'Question', name: '¿Necesito ya un backend?', acceptedAnswer: { '@type': 'Answer', text: 'No necesariamente. Si no lo tienes, puedo construir también la parte de servidor y las APIs que la app necesita para funcionar.' } },
+        { '@type': 'Question', name: '¿Me ayudas a publicarla?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Preparo íconos, capturas y textos de tienda, y te acompaño en el proceso de revisión de App Store y Google Play.' } },
+        { '@type': 'Question', name: '¿Qué pasa con las actualizaciones?', acceptedAnswer: { '@type': 'Answer', text: 'Dejo la app en un estado mantenible. Puedo encargarme de las nuevas versiones o pasar el código a tu equipo con todo documentado.' } },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -43,8 +74,8 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
   <!-- SECONDARY VISUAL -->
   <section class="wrap section--tight">
     <div class="grid-2 reveal">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1551650975-87deedd944c3', 1100)} alt="Interfaz de una aplicación móvil en pantalla" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1601784551446-20c9e07cdbdb', 1100)} alt="Teléfono mostrando una aplicación en uso" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1551650975-87deedd944c3', 1100)} width="1200" height="900" alt="Interfaz de una aplicación móvil en pantalla" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1601784551446-20c9e07cdbdb', 1100)} width="1200" height="900" alt="Teléfono mostrando una aplicación en uso" /></div>
     </div>
   </section>
 
