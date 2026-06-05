@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="Sognare — Caso de estudio · Ivan Garcia"
   description="Tienda Shopify de descanso con un programa de experimentación: cada cambio de la página se valida con pruebas A/B en Convert antes de quedarse."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/sognare/#project',
+      name: 'Sognare — Caso de estudio',
+      url: 'https://www.ivang.mx/work/sognare/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'Sognare' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://sognare.com.mx/cdn/shop/files/SG_MAY26_BannerExtensionDesc_1600x610_TS.jpg?width=1600" alt="Banner de campaña de la tienda en línea de Sognare" loading="lazy" />
+      <img src="https://sognare.com.mx/cdn/shop/files/SG_MAY26_BannerExtensionDesc_1600x610_TS.jpg?width=1600" width="1600" height="900" alt="Banner de campaña de la tienda en línea de Sognare" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real de la prueba en Convert. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">La variante ganadora de la página de producto subió la conversión <strong>+14%</strong> frente al control en la prueba A/B con Convert, y quedó en producción como nuevo estándar.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">La variante ganadora de la página de producto superó al control en la prueba A/B con Convert y quedó en producción como el nuevo estándar.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://sognare.com.mx/cdn/shop/files/61pf_nNZ-DL.jpg?width=1000" alt="Producto de descanso de Sognare" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://sognare.com.mx/cdn/shop/files/710ioUEyemL.jpg?width=1000" alt="Almohada de Sognare en detalle" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://sognare.com.mx/cdn/shop/files/61pf_nNZ-DL.jpg?width=1000" width="1200" height="900" alt="Producto de descanso de Sognare" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://sognare.com.mx/cdn/shop/files/710ioUEyemL.jpg?width=1000" width="1200" height="900" alt="Almohada de Sognare en detalle" loading="lazy" /></div>
     </div>
   </section>
 

@@ -5,6 +5,24 @@ import Base from '../../layouts/Base.astro';
 <Base
   title="Terrakan Residencial — Caso de estudio · Ivan Garcia"
   description="Sitio para Terrakan Residencial, desarrollo de lotes urbanizados en Mérida: una landing que vende confianza, con cotizador y agenda de visitas."
+  jsonld={[
+    {
+      '@type': 'CreativeWork',
+      '@id': 'https://www.ivang.mx/work/terrakan/#project',
+      name: 'Terrakan Residencial — Caso de estudio',
+      url: 'https://www.ivang.mx/work/terrakan/',
+      inLanguage: 'es-MX',
+      creator: { '@id': 'https://www.ivang.mx/#person' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Trabajo', item: 'https://www.ivang.mx/work/' },
+        { '@type': 'ListItem', position: 3, name: 'Terrakan Residencial' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -24,7 +42,7 @@ import Base from '../../layouts/Base.astro';
   <!-- LEAD VISUAL -->
   <section class="wrap">
     <div class="media reveal" data-parallax="0.05" style="aspect-ratio:16/9;border-radius:var(--r-xxl);">
-      <img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/familia-terrakan.jpeg" alt="Hero del sitio de Terrakan Residencial: familia caminando al aire libre" loading="lazy" />
+      <img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/familia-terrakan.jpeg" width="1600" height="900" alt="Hero del sitio de Terrakan Residencial: familia caminando al aire libre" loading="lazy" />
     </div>
   </section>
 
@@ -54,14 +72,13 @@ import Base from '../../layouts/Base.astro';
     <!-- RESULT -->
     <div class="stack-md reveal" style="margin-top:clamp(40px,7vw,80px);">
       <h2 class="display d-lg">Resultado</h2>
-      <!-- TODO(contenido): cifra de ejemplo, confirmar con el dato real del proyecto. -->
-      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">El cotizador y la agenda de visitas se volvieron la <strong>principal fuente de leads calificados</strong> del desarrollo, llevando al interesado del sitio a una conversación con un asesor en un par de clics.</p>
+      <p style="color:var(--ink-muted);font-size:clamp(16px,2vw,20px);line-height:1.5;max-width:48ch;">La landing genera confianza desde el primer vistazo y conduce a los visitantes interesados a agendar una visita o solicitar una cotización con muy pocos clics.</p>
     </div>
 
     <!-- GALLERY -->
     <div class="grid-2 reveal" data-d="1" style="margin-top:24px;">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/1.0.jpg" alt="Lotes urbanizados del desarrollo Terrakan" loading="lazy" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/2.0.jpg" alt="Vista del desarrollo residencial Terrakan" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/1.0.jpg" width="1200" height="900" alt="Lotes urbanizados del desarrollo Terrakan" loading="lazy" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src="https://terrakan.mx/wp-content/themes/terrakan/assets/img/2.0.jpg" width="1200" height="900" alt="Vista del desarrollo residencial Terrakan" loading="lazy" /></div>
     </div>
   </section>
 

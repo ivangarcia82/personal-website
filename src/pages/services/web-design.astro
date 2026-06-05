@@ -6,6 +6,27 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
 <Base
   title="Diseño web a la medida — Servicios · Ivan Garcia"
   description="Diseño UI/UX a la medida: interfaces claras, rápidas y responsivas, pensadas para tu marca y para guiar a cada visitante hacia la acción."
+  jsonld={[
+    {
+      '@type': 'Service',
+      '@id': 'https://www.ivang.mx/services/web-design/#service',
+      name: 'Diseño web a la medida',
+      url: 'https://www.ivang.mx/services/web-design/',
+      description: 'Diseño UI/UX a la medida: interfaces claras, rápidas y responsivas, pensadas para tu marca y para guiar a cada visitante hacia la acción.',
+      serviceType: 'Diseño UI/UX y desarrollo web',
+      inLanguage: 'es-MX',
+      provider: { '@id': 'https://www.ivang.mx/#organization' },
+      areaServed: { '@type': 'Country', name: 'México' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.ivang.mx/services/' },
+        { '@type': 'ListItem', position: 3, name: 'Diseño web a la medida' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -43,8 +64,8 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
   <!-- SECONDARY VISUAL -->
   <section class="wrap section--tight">
     <div class="grid-2 reveal">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559028012-481c04fa702d', 1100)} alt="Diseño de interfaz en una herramienta de diseño" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1507238691740-187a5b1d37b8', 1100)} alt="Bocetos de wireframes sobre papel" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559028012-481c04fa702d', 1100)} width="1200" height="900" alt="Diseño de interfaz en una herramienta de diseño" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1507238691740-187a5b1d37b8', 1100)} width="1200" height="900" alt="Bocetos de wireframes sobre papel" /></div>
     </div>
   </section>
 

@@ -6,6 +6,27 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
 <Base
   title="Web Apps — Servicios · Ivan Garcia"
   description="Plataformas y aplicaciones web a la medida: arquitectura escalable, integraciones robustas, paneles de control y código limpio que crece con tu negocio."
+  jsonld={[
+    {
+      '@type': 'Service',
+      '@id': 'https://www.ivang.mx/services/web-apps/#service',
+      name: 'Web Apps',
+      url: 'https://www.ivang.mx/services/web-apps/',
+      description: 'Plataformas y aplicaciones web a la medida: arquitectura escalable, integraciones robustas, paneles de control y código limpio que crece con tu negocio.',
+      serviceType: 'Desarrollo de aplicaciones web',
+      inLanguage: 'es-MX',
+      provider: { '@id': 'https://www.ivang.mx/#organization' },
+      areaServed: { '@type': 'Country', name: 'México' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.ivang.mx/services/' },
+        { '@type': 'ListItem', position: 3, name: 'Web Apps' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -43,8 +64,8 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
   <!-- SECONDARY VISUAL -->
   <section class="wrap section--tight">
     <div class="grid-2 reveal">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1517180102446-f3ece451e9d8', 1100)} alt="Código de una aplicación web en un editor" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1460925895917-afdab827c52f', 1100)} alt="Gráficas de analítica en una pantalla" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1517180102446-f3ece451e9d8', 1100)} width="1200" height="900" alt="Código de una aplicación web en un editor" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1460925895917-afdab827c52f', 1100)} width="1200" height="900" alt="Gráficas de analítica en una pantalla" /></div>
     </div>
   </section>
 

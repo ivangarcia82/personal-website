@@ -6,6 +6,27 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
 <Base
   title="Ecommerce con Shopify — Servicios · Ivan Garcia"
   description="Tiendas Shopify que venden: tema a la medida en Liquid, integraciones, optimización de conversión y rendimiento, y migración desde otras plataformas."
+  jsonld={[
+    {
+      '@type': 'Service',
+      '@id': 'https://www.ivang.mx/services/ecommerce-shopify/#service',
+      name: 'Ecommerce con Shopify',
+      url: 'https://www.ivang.mx/services/ecommerce-shopify/',
+      description: 'Tiendas Shopify que venden: tema a la medida en Liquid, integraciones, optimización de conversión y rendimiento, y migración desde otras plataformas.',
+      serviceType: 'Desarrollo de tiendas Shopify a la medida',
+      inLanguage: 'es-MX',
+      provider: { '@id': 'https://www.ivang.mx/#organization' },
+      areaServed: { '@type': 'Country', name: 'México' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.ivang.mx/' },
+        { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.ivang.mx/services/' },
+        { '@type': 'ListItem', position: 3, name: 'Ecommerce con Shopify' },
+      ],
+    },
+  ]}
 >
   <!-- HEADER -->
   <section class="wrap" style="padding-top:118px;padding-bottom:clamp(28px,5vw,52px);">
@@ -44,8 +65,8 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
   <!-- SECONDARY VISUAL -->
   <section class="wrap section--tight">
     <div class="grid-2 reveal">
-      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559056199-641a0ac8b55e', 1100)} alt="Producto de marca fotografiado para una tienda en línea" /></div>
-      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1563013544-824ae1b704d3', 1100)} alt="Persona comprando en una tienda en línea desde el teléfono" /></div>
+      <div class="media ratio-4-3" data-parallax="0.06"><img src={U('photo-1559056199-641a0ac8b55e', 1100)} width="1200" height="900" alt="Producto de marca fotografiado para una tienda en línea" /></div>
+      <div class="media ratio-4-3" data-parallax="0.1"><img src={U('photo-1563013544-824ae1b704d3', 1100)} width="1200" height="900" alt="Persona comprando en una tienda en línea desde el teléfono" /></div>
     </div>
   </section>
 
