@@ -26,6 +26,16 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
         { '@type': 'ListItem', position: 3, name: 'Web Apps' },
       ],
     },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.ivang.mx/services/web-apps/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: '¿En qué se diferencia de una página web?', acceptedAnswer: { '@type': 'Answer', text: 'Una página presenta información; una web app hace cosas: gestiona usuarios, datos, procesos y lógica de negocio. Si tu equipo necesita operar dentro del sistema, es una web app.' } },
+        { '@type': 'Question', name: '¿Se integra con lo que ya uso?', acceptedAnswer: { '@type': 'Answer', text: 'Esa suele ser la razón de construirla a la medida. Conecto la plataforma con tus sistemas actuales mediante APIs en lugar de obligarte a cambiar de herramientas.' } },
+        { '@type': 'Question', name: '¿Cómo evitas que se vuelva inmantenible?', acceptedAnswer: { '@type': 'Answer', text: 'Con una arquitectura clara, código documentado y entregas por etapas. El objetivo es que cualquier desarrollador pueda continuar el proyecto sin partir de cero.' } },
+        { '@type': 'Question', name: '¿Puedes retomar un proyecto existente?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Reviso el estado del código, te doy un diagnóstico honesto y trabajamos sobre lo que vale la pena conservar.' } },
+      ],
+    },
   ]}
 >
   <!-- HEADER -->

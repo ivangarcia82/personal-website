@@ -26,6 +26,16 @@ const U = (id: string, w = 1400) => `https://images.unsplash.com/${id}?auto=form
         { '@type': 'ListItem', position: 3, name: 'Mobile Apps' },
       ],
     },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.ivang.mx/services/mobile-apps/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: '¿Una app para ambas plataformas o solo una?', acceptedAnswer: { '@type': 'Answer', text: 'En la mayoría de los casos conviene una sola base de código para iOS y Android: mismo presupuesto, doble alcance. Si tu caso pide algo nativo puro, lo hablamos.' } },
+        { '@type': 'Question', name: '¿Necesito ya un backend?', acceptedAnswer: { '@type': 'Answer', text: 'No necesariamente. Si no lo tienes, puedo construir también la parte de servidor y las APIs que la app necesita para funcionar.' } },
+        { '@type': 'Question', name: '¿Me ayudas a publicarla?', acceptedAnswer: { '@type': 'Answer', text: 'Sí. Preparo íconos, capturas y textos de tienda, y te acompaño en el proceso de revisión de App Store y Google Play.' } },
+        { '@type': 'Question', name: '¿Qué pasa con las actualizaciones?', acceptedAnswer: { '@type': 'Answer', text: 'Dejo la app en un estado mantenible. Puedo encargarme de las nuevas versiones o pasar el código a tu equipo con todo documentado.' } },
+      ],
+    },
   ]}
 >
   <!-- HEADER -->
